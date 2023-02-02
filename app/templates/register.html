@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Prisiregistruokite{% endblock %}
+
+{% block main %}
+<div class="content-section">
+    <form method="POST" action="{{ url_for('register') }}">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Full Name</legend>
+            <legend class="border-bottom mb-4">Email</legend>
+            <legend class="border-bottom mb-4">Password</legend>
+            <legend class="border-bottom mb-4">Repeat password</legend>
+
+            <div class="form-group">
+                {{ form.Full_Name.label(class="form-control-label") }}
+                {% if form.Full_Name.errors %}
+                {{ form.Full_Name(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.Full_Name.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.Full Name(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }}
+                {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-control-label") }}
+                {% if form.password.errors %}
+                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.Repeat_Password.label(class="form-control-label") }}
+                {% if form.Repeat_Password.errors %}
+                {{ form.Repeat_Password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.Repeat_Password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.Repeat_Password(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <button class="btn btn-primary mt-3" type="submit">Register</button>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Or perhaps just login? <a class="ml-2" href="{{ url_for('login') }}">Login</a>
+    </small>
+</div>
+{% endblock main %}
